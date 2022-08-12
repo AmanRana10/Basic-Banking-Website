@@ -1,0 +1,63 @@
+<%- include('partials/navbar'); %>
+    
+    <% if(message.length > 0){ %>
+        <% if(message == "successful transaction !"){ %>
+            <div class="alert alert-success" role="alert">
+                <%= message %>
+            </div>
+        <% } %> 
+            
+        <% if(message != "successful transaction !"){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= message %>
+            </div>
+        <% } %> 
+    <% } %>
+    
+        
+    
+    
+    <div class="container shadow py-2 transaction">
+        <div class="container">
+            <form action="transaction" method="post">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 transaction-card">
+                        <h3>Sender Details</h3>
+
+                        <div class="mb-3">
+                            <label for="senderUserName" class="form-label">Name</label>
+                            <input type="text" class="form-control input-sm" name="senderUserName"
+                                aria-describedby="usernameHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="senderAccountNumber" class="form-label">Account Number</label>
+                            <input type="text" class="form-control input-sm" name="senderAccountNumber">
+                        </div>
+                        <div class="mb-3">
+                            <label for="senderAmount" class="form-label">Amount (in Rs)</label>
+                            <input type="number" class="form-control input-sm" name="senderAmount">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 col-lg-6 transaction-card">
+                        <h3>Reciever Details</h3>
+                        <div class="mb-3">
+                            <label for="recieverUserName" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="recieverUserName"
+                                aria-describedby="usernameHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recieverAccountNumber" class="form-label">Account Number</label>
+                            <input type="text" class="form-control" name="recieverAccountNumber">
+                        </div>
+
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary transaction-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <p class="text-center my-5">Want to check your bank balance ? <a href="customers"> Click Here</a></p>
+    </div>
+
+<%- include('partials/footer'); %>

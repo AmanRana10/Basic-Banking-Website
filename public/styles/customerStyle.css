@@ -1,0 +1,16 @@
+#items{
+    position: absolute;
+    top : 5%;
+    left: 1%;
+    width: 95%;
+}
+
+#items h2{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.customer-item a{
+    color: aliceblue;
+    text-decoration: none;
+}

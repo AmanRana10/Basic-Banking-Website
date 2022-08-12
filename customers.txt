@@ -1,0 +1,75 @@
+[
+  {
+    "name" : "Thomas",
+    "email" : "shelby@gmail.com",
+    "phone" : "2313145321",
+    "amount" : 2000000,
+    "accountNumber" : 1001
+  },
+  {
+    "name" : "Walter",
+    "email" : "white@yahoo.com",
+    "phone" : "2112141155",
+    "amount" : 8000000,
+    "accountNumber" : 1002
+  },
+  {
+    "name" : "Sam",
+    "email" : "sam123@gmail.com",
+    "phone" : "241040401",
+    "amount" : 500000,
+    "accountNumber" : 1003
+  },
+  {
+    "name" : "Matt",
+    "email" : "murdock@hotmail.com",
+    "phone" : "24924944114",
+    "amount" : 1000000,
+    "accountNumber" : 1004
+  },
+  {
+      "name" : "Saul",
+      "email" : "goodman@gmail.com",
+      "phone" : "2041041041",
+      "amount" : 99910010,
+      "accountNumber" : 1005
+  },
+  {
+      "name" : "Jesse",
+      "email" : "jesse12@yahoo.com",
+      "phone" : "292939194",
+      "amount" : 1400000,
+      "accountNumber" : 1006
+  },
+  {
+      "name" : "Frank",
+      "email" : "castle@hotmail.com",
+      "phone" : "9482149141",
+      "amount" : 500000,
+      "accountNumber" : 1007
+  },
+  {
+      "name" : "Tony",
+      "email" : "stark@gmail.com",
+      "phone" : "2241951950",
+      "amount" : 100000000,
+      "accountNumber" : 1008
+  },
+  {
+      "name" : "Stephen",
+      "email" : "strange@gmail.com",
+      "phone" : "8271829481",
+      "amount" : 10000820,
+      "accountNumber" : 1009
+  },
+  {
+      "name" : "Karen",
+      "email" : "karen14@gmail.com",
+      "phone" : "249294910",
+      "amount" : 5105106,
+      "accountNumber" : 1010
+  }
+]
+
+
+

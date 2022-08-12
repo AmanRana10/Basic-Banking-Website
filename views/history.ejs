@@ -1,0 +1,30 @@
+<%- include('partials/navbar'); %>
+
+
+    <div id="items" class="my-5 mx-4">
+        <h2>Transactions</h2>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Serial Number</th>
+                    <th scope="col">Sender's Name</th>
+                    <th scope="col">Reciever's Name</th>
+                    <th scope="col">Amount</th>
+                </tr>
+                <% transactionList.forEach(transaction =>{ %>
+                    <tr class="customer-item">
+                        <th scope="row"><%= transaction.sno %></th>
+                        <td><%= transaction.sender %></td>
+                        <td><%= transaction.reciever %></td>
+                        <td><%= transaction.amount %></td>
+                    </tr>
+                <% }) %>
+                
+                
+            </thead>
+        </table>
+
+    </div>
+
+
+    <%- include('partials/footer'); %>

@@ -1,0 +1,55 @@
+.navList{
+    padding-left: 60%;
+}
+
+.nav-item a{
+    width: fit-content;
+    margin: 5px;
+}
+
+.backImg{
+    height: 44rem;
+    filter: blur(10px);
+}
+
+.bg-text {
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.4); 
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+  }
+
+.bg-btn1{
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: fit-content;
+    position: absolute;
+    background-color: rgba(0,0,0, 0.4);
+}
+
+.bg-btn2{
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    top: 65%;
+    left: 50%;
+    width: 30%;
+    height: fit-content;
+    position: absolute;
+    background-color: rgba(0,0,0, 0.4); 
+}
+
+.feature{
+    box-shadow: 5px 8px 10px skyblue;
+}
