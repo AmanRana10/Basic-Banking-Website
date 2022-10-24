@@ -72,78 +72,65 @@ app.post("/transaction",function(req,res){
     let reqObj = req.body;
     let amt = req.body.senderAmount;
     let bal;
-    Customer.find({name : reqObj.senderUserName,accountNumber : reqObj.senderAccountNumber},function(err,sender){
-        if(err)
-            console.log(err);
-        else {
-            if(typeof sender[0] === "undefined"){
-                req.flash('message', 'Sender Not Found')
-                res.redirect('/transaction')
-                // console.log("alert")
-            }
-            
-            else{
-                bal = sender[0].amount - amt;
-                // console.log(sender[0]);
-                if(bal < 0){
-                    req.flash('message', 'User entered amount which is more than their balance. Please try again.')
+    Customer.find({name : reqObj.senderUserName,accountNumber : reqObj.senderAccountNumber})
+    .then(sender => {
+        if(typeof sender[0] === "undefined"){
+            req.flash('message', 'Sender Not Found')
+            res.redirect('/transaction')
+        }
+        else
+        {
+            Customer.find({name : reqObj.recieverUserName,accountNumber : reqObj.recieverAccountNumber})
+            .then(reciever => {
+                if(typeof reciever[0] === "undefined"){
+                    req.flash('message', 'Reciever Not Found')
                     res.redirect('/transaction')
-                    // console.log("alert")
                 }
-                else
-                {
-                    Customer.find({name : reqObj.recieverUserName,accountNumber : reqObj.recieverAccountNumber},function(err,reciever){
-                        if(err)
+                        
+                else{                                
+                    let newAmt = Number(reciever[0].amount) + Number(amt);
+                    Transaction.find({})
+                    .then(transactions => {
+                        let t1 = new Transaction({
+                            sno : transactions.length + 1,
+                            sender : reqObj.senderUserName,
+                            reciever : reqObj.recieverUserName,
+                            amount : amt
+                        });
+                        
+                        t1.save(function(err){
                             console.log(err);
-                        else {
-                            if(typeof reciever[0] === "undefined"){
-                                req.flash('message', 'Reciever Not Found')
-                                res.redirect('/transaction')
-                            }
-                            
-                            else{                                
-                                let newAmt = Number(reciever[0].amount) + Number(amt);
-                                // console.log(bal)
-                                Transaction.find({},function(err,transactionos){
-                                    if(err)
-                                        console.log(err);
-                                    else{
-                                        let t1 = new Transaction({
-                                            sno : transactionos.length + 1,
-                                            sender : reqObj.senderUserName,
-                                            reciever : reqObj.recieverUserName,
-                                            amount : amt
-                                        });
-                                        
-                                        t1.save(function(err){
-                                            console.log(err);
-                                        })
-                                    }
-                                })
-                                
-                                Customer.findOneAndUpdate({accountNumber: reqObj.recieverAccountNumber},{amount : newAmt},function(err, doc) {
-                                    if (err) 
-                                        console.log(err);
-                                   
-                                });
-                                
-                                Customer.findOneAndUpdate({accountNumber: reqObj.senderAccountNumber},{amount : bal},function(err, doc) {
-                                    if (err) 
-                                        console.log(err);
-                                   
-                                });
-                                req.flash('message', 'successful transaction !')
-                                res.redirect('/transaction')
-                
-                            }
-                        }     
+                        })
                     })
+                    .catch(err => console.log(err))
                     
+                    Customer.findOneAndUpdate({accountNumber: reqObj.recieverAccountNumber},{amount : newAmt},function(err, doc) {
+                        if (err) 
+                            console.log(err);
+                       
+                    });
+
+                    bal = sender[0].amount - amt;
+                    
+                    if(bal < 0){
+                        req.flash('message', 'User entered amount which is more than their balance. Please try again.')
+                        res.redirect('/transaction')
+                    }
+                    Customer.findOneAndUpdate({accountNumber: reqObj.senderAccountNumber},{amount : bal},function(err, doc) {
+                        if (err) 
+                            console.log(err);
+                       
+                    });
+                    req.flash('message', 'successful transaction !')
+                    res.redirect('/transaction')
+            
                 }
-                
-            }
-        }     
+            })
+            .catch(err => console.log(err))
+                    
+        }
     })
+    .catch(err => console.log(err))
 })
 
 app.get("/addCustomer", (req,res)=>{
