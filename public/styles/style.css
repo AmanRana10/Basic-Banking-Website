@@ -53,3 +53,11 @@
 .feature{
     box-shadow: 5px 8px 10px skyblue;
 }
+
+
+#addCustomerForm{
+    position: absolute;
+    top : 10%;
+    left: 1%;
+    width: 85%; 
+}

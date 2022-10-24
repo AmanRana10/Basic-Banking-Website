@@ -146,7 +146,34 @@ app.post("/transaction",function(req,res){
     })
 })
 
+app.get("/addCustomer", (req,res)=>{
+    Customer.find({}, function(err, customerlist){
+        res.render('addCustomer',{
+            customerList : customerlist
+        })
+    })
+})
 
+app.post("/addCustomer", (req, response)=> {
+    
+    Customer.find({})
+    .then(res => {
+        let accountNumber = 1001;
+        accountNumber += res.length;
+
+        let newUser = {
+            name : req.body.userName,
+            email : req.body.userEmail,
+            phone : req.body.phoneNumber,
+            amount : req.body.accountBalance,
+            accountNumber : accountNumber
+        }
+        Customer.insertMany(newUser);
+        response.redirect('/customers');
+    })
+    .catch(err =>console.log("err", err))
+    
+})
 app.listen(process.env.PORT || 3000, function () { 
     console.log("Server started.");
 });

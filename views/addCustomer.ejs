@@ -1,0 +1,26 @@
+<%- include('partials/navbar'); %>
+    <form id="addCustomerForm" class="my-5 mx-4" action="addCustomer" method="post">
+        <h4> Account Number : <%= 1001 + customerList.length %></h4>
+        <br>
+        
+        <div class="mb-3">
+            <label for="userName" class="form-label">Name</label>
+            <input required type="text" class="form-control" name="userName">
+
+        </div>
+        <div class="mb-3">
+            <label for="accountBalance" class="form-label">Account Balance</label>
+            <input required type="number" class="form-control" name="accountBalance">
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone</label>
+            <input required type="number" class="form-control" name="phoneNumber">
+        </div>
+        <div class="mb-3">
+            <label for="userEmail" class="form-label">Email address</label>
+            <input required type="email" class="form-control" name="userEmail" aria-describedby="emailHelp">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+<%- include('partials/footer'); %>
